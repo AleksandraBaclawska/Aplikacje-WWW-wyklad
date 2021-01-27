@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from restgameapi.models import Gamemodel
+
+
+admin.site.register(Gamemodel)

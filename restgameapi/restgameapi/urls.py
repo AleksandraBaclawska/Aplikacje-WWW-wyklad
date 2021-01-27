@@ -20,6 +20,7 @@ from . import views
 
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
 	path('', views.apihelp, name="help"),
     path('gamelist/', views.gameList, name="gamelist"),
 	path('gamedetail/<str:pk>/', views.gameDetail, name="gamedetail"),

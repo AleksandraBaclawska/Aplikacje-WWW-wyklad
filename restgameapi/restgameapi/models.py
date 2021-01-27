@@ -6,8 +6,9 @@ class Gamemodel(models.Model):
     year=models.CharField(max_length=100)
     class Meta:
         db_table='games_API'
+        ordering = ('name',)
     def __str__(self):
-		    return self
+		    return str(self.name) if self.name else ''
 
 
             
