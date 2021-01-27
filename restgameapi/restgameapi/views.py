@@ -4,9 +4,15 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.response import Response
 
-from restgameapi.serialization import Serializationclass
+from restgameapi.serialization import Serializationclass, UserSerializer
 from restgameapi.models import Gamemodel
 from rest_framework.decorators import api_view
+
+
+from django.contrib.auth.models import User
+from rest_framework import generics
+
+
 
 @api_view(['GET'])
 def apihelp(request):
@@ -59,3 +65,14 @@ def gameDelete(request, pk):
 	game.delete()
 
 	return Response('Item succsesfully delete!')
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    name = 'user-list'
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    name = 'user-detail'
+

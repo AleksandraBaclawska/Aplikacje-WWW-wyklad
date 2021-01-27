@@ -20,8 +20,9 @@ from . import views
 
 
 urlpatterns = [
+    path('', views.apihelp, name="help"),
     path('admin/', admin.site.urls),
-	path('', views.apihelp, name="help"),
+    path('api-auth/', include('rest_framework.urls')),
     path('gamelist/', views.gameList, name="gamelist"),
 	path('gamedetail/<str:pk>/', views.gameDetail, name="gamedetail"),
 	path('gameadd/', views.gameAdd, name="gameadd"),
